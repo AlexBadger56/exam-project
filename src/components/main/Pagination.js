@@ -1,23 +1,27 @@
-import React from "react";
+import * as React from 'react';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
-const Pagination = ({itemsPerPage, totalItems}) => {
-  const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++){
-    pageNumbers.push(i);
-  }
+
+export default function PaginationControlled(props) {
+  const [page, setPage] = React.useState(1);
+  
+  const handleChange = (event, value) => {
+    event = props.paginate(value);
+    setPage(value);
+  };
 
   return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map(number => (
-          <li key={number} className="page-item">
-            <a href="!#" className="page-link">{number}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  )
+    <Stack spacing={2}>
+      <Pagination
+        count={Math.ceil(props.totalItems / props.itemsOnPage)}
+        page={page}
+        shape="rounded"
+        variant="outlined"
+        color="primary"
+        onChange={handleChange}
+      />
+    </Stack>
+  );
 }
-
-export default Pagination
