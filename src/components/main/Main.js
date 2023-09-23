@@ -1,39 +1,40 @@
 import "./main.scss";
 import CharacterCard from "../characterCard/CharacterCard";
-import md5 from "js-md5";
 import { useEffect, useState } from "react";
 import PaginationControlled from './Pagination';
-import FullWidthTextField from '../Search/Search';
 
-
-const PUBLIC_KEY = "ba9129e72667df3ce251058a90350325"; // your public key
-const PRIVATE_KEY = "7381aeb9b9fdc26766a6b4d09cb04393b7a4f9b8"; // youur private key
 
 function Main() {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsOnPage] = useState(10);
-  const offset = (currentPage - 1) * itemsOnPage; // Вычисляем смещение
-  const limit = itemsOnPage; // Устанавливаем лимит
-
+  const [itemsOnPage] = useState(48);
+  const offset = (currentPage - 1) * itemsOnPage; 
+  const limit = itemsOnPage; 
+  const [url, setUrl] = useState("https://gateway.marvel.com/v1/public/characters?ts=1&apikey=ba9129e72667df3ce251058a90350325&hash=40c90ea382c6aedf8e37c3cc497de90f")
+  const [search, setSearch] = useState("");
+  
   useEffect(() => {
     const fetchData = async () => {
-      const ts = Number(new Date());
-      const hash = md5.create();
-      hash.update(ts + PRIVATE_KEY + PUBLIC_KEY);
-      const response = await fetch(
-        `https://gateway.marvel.com/v1/public/characters?ts=${ts}&orderBy=name&limit=${limit}&offset=${offset}&apikey=${PUBLIC_KEY}&hash=${hash.hex()}`
-      );
+      const response = await fetch(`${url}&offset=${offset}&limit=${limit}`);
       const data = await response.json();
       setItems(data);
     };
     fetchData();
-  }, [currentPage, itemsOnPage,offset, limit]);
+  }, [url, offset, limit]);
+  
   console.log(items);
 
   const currentItem = items?.data?.results
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
+
+  const searchMarvel = () => {
+    setUrl(
+      `https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${search}&ts=1&apikey=2e1cdeec426ae323484f29024084c206&hash=d516513ba95b9407c7aca0f73b241f8a`
+    );
+    setCurrentPage(1); // Оновити сторінку після пошуку
+  };
+  
 
   return (
     <>
@@ -42,7 +43,10 @@ function Main() {
             </div>
 
             <div>
-                <FullWidthTextField />
+            <input type="search" placeholder='Search Here'
+                 className='search'
+                 onChange={e=>setSearch(e.target.value)}
+                 onKeyPress={searchMarvel}/>
             </div>
         </div>
 
