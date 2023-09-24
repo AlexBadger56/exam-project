@@ -21,6 +21,7 @@ export default function PaginationControlled(props) {
         variant="outlined"
         color="primary"
         onChange={handleChange}
+        className='d-flex justify-content-center align-items-center py-4'
       />
     </Stack>
   );

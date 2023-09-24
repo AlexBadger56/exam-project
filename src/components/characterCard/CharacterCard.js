@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./charactersCard.scss";
 
 function CharacterCard(props) {
@@ -9,17 +9,19 @@ function CharacterCard(props) {
     <>
       {props.items?.map((item) => (
         <div
-          className='card'
+          className="col-12 col-md-6 col-lg-3 mb-4"
           key={item.id}
           onClick={() => navigate(`/${item.id}`)}
         >
-          <img
-            src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-            alt='Hero Avatar'
-            className='card__img'
-          />
-          <div className='card__title'>
-            <h3>{item.name}</h3>
+          <div className="card-item">
+            <img
+              src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+              alt="Hero Avatar"
+              className="card-item__img"
+            />
+            <div className="card-item__title">
+              <h3>{item.name}</h3>
+            </div>
           </div>
         </div>
       ))}
