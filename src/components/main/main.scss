@@ -13,13 +13,6 @@
   height: 150px;
 }
 
-.content {
-  // width: 80%;
-  // display: grid;
-  // grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  // grid-gap: 1rem;
-}
-
 body .main {
   width: 100%;
   min-height: 100vh;
@@ -61,4 +54,8 @@ body .main {
   border-radius: 1rem;
   font-size: 20px;
   border: 2px solid black;
+}
+
+li {
+  list-style: none;
 }

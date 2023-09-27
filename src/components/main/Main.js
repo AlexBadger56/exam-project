@@ -54,27 +54,27 @@ function Main() {
 
   return (
     <>
-      <div className="header">
-        <div className="container mt-4">
-          <Form onSubmit={searchMarvel} noValidate validated={validated}>
-            <Form.Group className="mb-3" controlId="validationCustom01">
-              <InputGroup className="mb-3">
-                <Button variant="primary" id="button-addon1" type="submit">
-                  Search
-                </Button>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter hero name..."
-                  required
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please type character name.
-                </Form.Control.Feedback>
-              </InputGroup>
-            </Form.Group>
-          </Form>
-        </div>
+      <div className="header"></div>
+
+      <div className="container mt-4">
+        <Form onSubmit={searchMarvel} noValidate validated={validated}>
+          <Form.Group className="mb-3" controlId="validationCustom01">
+            <InputGroup className="mb-3">
+              <Button variant="primary" id="button-addon1" type="submit">
+                Search
+              </Button>
+              <Form.Control
+                type="text"
+                placeholder="Enter hero name..."
+                required
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <Form.Control.Feedback type="invalid">
+                Please type character name.
+              </Form.Control.Feedback>
+            </InputGroup>
+          </Form.Group>
+        </Form>
       </div>
 
       <div className="content container">
