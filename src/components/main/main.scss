@@ -16,13 +16,13 @@
 body .main {
   width: 100%;
   min-height: 100vh;
-  background-color: bisque;
-  color: black;
+  background-color: #8ee4af;
+  color: #05386b;
   transition: all 0.4s;
 
   &.dark {
-    background-color: black;
-    color: white;
+    background-color: #05386b;
+    color: #edf5e1;
   }
 
   p {
@@ -46,16 +46,40 @@ body .main {
   display: flex;
   align-items: center;
 }
-.header .search {
-  outline: none;
-  background: none;
-  border: none;
-  display: flex;
-  border-radius: 1rem;
-  font-size: 20px;
-  border: 2px solid black;
+
+/* styles.css */
+
+/* Задаємо кольори для активної кнопки і крапки "Еліпсис" */
+.pagination .page-item.active .page-link {
+  background-color: #379683;
+  border-color: #379683;
+  color: #ffffff;
 }
 
-li {
-  list-style: none;
+.pagination .page-item.disabled .page-link {
+  background-color: #8ee4af;
+  border-color: #379683;
+  color: #6c757d;
+}
+
+/* Задаємо кольори для решти кнопок */
+.pagination .page-item .page-link {
+  background-color: #8ee4af;
+  border-color: #379683;
+  color: #343a40;
+}
+
+/* Змінюємо стилі кнопок попередньої і наступної сторінки */
+.pagination .page-item.prev .page-link,
+.pagination .page-item.next .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+}
+
+/* Задаємо стилі для "Еліпсис" */
+.pagination .page-item.ellipsis .page-link {
+  background-color: transparent;
+  border-color: transparent;
+  color: #343a40;
 }

@@ -13,7 +13,7 @@ function CharacterCard(props) {
           key={item.id}
           onClick={() => navigate(`/${item.id}`)}
         >
-          <div className="card-item">
+          <div className="card-item card">
             <img
               src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
               alt="Hero Avatar"

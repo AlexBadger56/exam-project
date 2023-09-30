@@ -1,28 +1,69 @@
-import * as React from 'react';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
+import React from "react";
+import Pagination from "react-bootstrap/Pagination";
 
+const PaginationComponent = ({
+  totalItems,
+  itemsOnPage,
+  currentPage,
+  paginate,
+}) => {
+  const totalPages = Math.ceil(totalItems / itemsOnPage);
 
+  const pageItems = [];
+  const maxPagesToShow = 5; // Максимальна кількість кнопок для показу
 
-export default function PaginationControlled(props) {
-  const [page, setPage] = React.useState(1);
-  
-  const handleChange = (event, value) => {
-    event = props.paginate(value);
-    setPage(value);
-  };
-
-  return (
-    <Stack spacing={2}>
-      <Pagination
-        count={Math.ceil(props.totalItems / props.itemsOnPage)}
-        page={page}
-        shape="rounded"
-        variant="outlined"
-        color="primary"
-        onChange={handleChange}
-        className='d-flex justify-content-center align-items-center py-4'
+  // Перевірка, чи загальна кількість сторінок більше 1
+  if (totalPages > 1) {
+    // Попередня сторінка
+    pageItems.push(
+      <Pagination.Prev
+        key="prev"
+        onClick={() => paginate(currentPage - 1)}
+        disabled={currentPage === 1}
       />
-    </Stack>
-  );
-}
+    );
+
+    // Сторінки для відображення
+    for (let page = 1; page <= totalPages; page++) {
+      if (
+        page === 1 || // Перша сторінка завжди відображається
+        page === totalPages || // Остання сторінка завжди відображається
+        (page >= currentPage - 2 && page <= currentPage + 2) || // Відображати сторінки навколо поточної
+        page === currentPage + maxPagesToShow - 1 // Остання сторінка в максимальному діапазоні
+      ) {
+        pageItems.push(
+          <Pagination.Item
+            key={page}
+            active={page === currentPage}
+            onClick={() => paginate(page)}
+          >
+            {page}
+          </Pagination.Item>
+        );
+      } else if (
+        page === currentPage - 3 && // Зробити перший елемент після пропуску
+        currentPage > 3 // Якщо поточна сторінка більше 3
+      ) {
+        pageItems.push(<Pagination.Ellipsis key="ellipsis-before" disabled />);
+      } else if (
+        page === currentPage + maxPagesToShow && // Зробити останній елемент перед пропуском
+        currentPage < totalPages - maxPagesToShow // Якщо поточна сторінка менше, ніж максимальна кількість сторінок залишилася
+      ) {
+        pageItems.push(<Pagination.Ellipsis key="ellipsis-after" disabled />);
+      }
+    }
+
+    // Наступна сторінка
+    pageItems.push(
+      <Pagination.Next
+        key="next"
+        onClick={() => paginate(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      />
+    );
+  }
+
+  return <Pagination>{pageItems}</Pagination>;
+};
+
+export default PaginationComponent;
