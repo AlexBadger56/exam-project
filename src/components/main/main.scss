@@ -14,10 +14,14 @@
   position: relative;
 
   &__logo {
-    max-width: 100px;
+    max-width: 150px;
     width: 100%;
-    max-height: 100px;
     height: 100%;
+
+    & img {
+      display: block;
+      width: 100%;
+    }
   }
 }
 
@@ -102,22 +106,7 @@ body .main {
   color: #343a40;
 }
 
-.change-theme {
-  position: absolute;
-  top: 47px;
-  right: 300px;
-  background-color: #379683;
-  border-color: #379683;
-  cursor: pointer;
-  transition: all 0.4s;
-
-  &:hover {
-    background-color: #8ee4af;
-    border-color: #8ee4af;
-  }
-}
-
 .character-info__bg {
   background-color: #379683;
-  opacity: 0.8;
+  font-size: large;
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Comics from "./Comics";
+import CustomizedSwitches from "../ThemeToggle/ThemeToggle";
+import logo from "../../assets/images/marvel-logo.png";
 
 const CharacterInfo = () => {
   const { id } = useParams();
@@ -26,20 +28,30 @@ const CharacterInfo = () => {
     <>
       {item ? (
         <div className="container">
-          <div className="row pt-4">
-            <div className="col-10 d-flex justify-content-end m-4">
-              <Link
-                to="/"
-                className="btn btn-primary "
-                style={{
-                  backgroundColor: "#379683",
-                  color: "#ffffff",
-                  border: "none",
-                }}
-              >
-                Back
-              </Link>
+          <div className="row d-flex justify-content-between pt-5 mb-5">
+            <div className="col-1 col-md-1 col-lg-10 header__logo me-5">
+              <img src={logo} alt="logo" />
             </div>
+            <div className="d-flex col-1 col-md-1 col-lg-2">
+              {" "}
+              <div className="m-4 pe-3">
+                <Link
+                  to="/"
+                  className="btn btn-primary "
+                  style={{
+                    backgroundColor: "#379683",
+                    color: "#ffffff",
+                    border: "none",
+                  }}
+                >
+                  Back
+                </Link>
+              </div>
+              <div className="mw-50 p-3">
+                <CustomizedSwitches />
+              </div>
+            </div>
+
             <div className="character-info__bg d-flex col-12 col-md-12 col-lg-12 m-4">
               <div className="col-6 col-md-6 col-lg-6 m-4">
                 <img

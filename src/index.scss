@@ -1,0 +1,20 @@
+:root {
+  --accent-dark: #379683;
+  --accent-light: #e9eaee;
+  --bg-dark: #060606;
+  --bg-light: coral;
+}
+
+.layout {
+  background-color: var(--bg-light);
+  color: #222;
+  transition: all 0.5s;
+
+  &.dark {
+    background-color: var(--bg-dark);
+
+    &.change-theme {
+      color: var(--accent-dark);
+    }
+  }
+}

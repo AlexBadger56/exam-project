@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import logo from "../../assets/images/marvel-logo.png";
+import CustomizedSwitches from "../ThemeToggle/ThemeToggle";
 
 function Main() {
   const [items, setItems] = useState([]);
@@ -20,24 +21,9 @@ function Main() {
   const [validated, setValidated] = useState(false);
 
   useEffect(() => {
-    // Функція для отримання даних з локального сховища (кешу)
-    const getCachedData = () => {
-      const cachedData = localStorage.getItem(url);
-      if (cachedData) {
-        setItems(JSON.parse(cachedData));
-      }
-    };
-
-    // Перевірка наявності даних в кеші
-    getCachedData();
-
-    // Виконання запиту та оновлення даних
     const fetchData = async () => {
       const response = await fetch(`${url}&offset=${offset}&limit=${limit}`);
       const data = await response.json();
-
-      // Збереження даних в локальному сховищі (кешу)
-      localStorage.setItem(url, JSON.stringify(data));
 
       setItems(data);
     };
@@ -76,13 +62,13 @@ function Main() {
     <>
       <div className="header">
         <div className="container">
-          <div className="row d-flex align-items-center">
-            <div className="col-9 col-md-6 col-lg-3 mb-4 mt-4 header__wrapper">
+          <div className="row d-flex align-items-center justify-content-between">
+            <div className="col-2 col-md-2 col-lg-2 mb-4 mt-4 header__wrapper">
               <div className="header__logo me-5">
                 <img src={logo} alt="logo" />
               </div>
             </div>
-            <div className="col-10 col-md-6 col-lg-9">
+            <div className="col-4 col-md-6 col-lg-7">
               <Form onSubmit={searchMarvel} noValidate validated={validated}>
                 <Form.Group className="mb-3" controlId="validationCustom01">
                   <InputGroup className="mb-3">
@@ -110,6 +96,9 @@ function Main() {
                   </InputGroup>
                 </Form.Group>
               </Form>
+            </div>
+            <div className="col-2 col-md-2 col-lg-1 mw-50 pb-3">
+              <CustomizedSwitches />
             </div>
           </div>
         </div>
