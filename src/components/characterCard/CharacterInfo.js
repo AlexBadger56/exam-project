@@ -26,26 +26,35 @@ const CharacterInfo = () => {
     <>
       {item ? (
         <div className="container">
-          <div className="row mt-4">
-            <div className="col-12 d-flex justify-content-end mb-4">
-              <Link to="/" className="btn btn-primary ">
+          <div className="row pt-4">
+            <div className="col-10 d-flex justify-content-end m-4">
+              <Link
+                to="/"
+                className="btn btn-primary "
+                style={{
+                  backgroundColor: "#379683",
+                  color: "#ffffff",
+                  border: "none",
+                }}
+              >
                 Back
               </Link>
             </div>
-
-            <div className="col-12 col-md-6 mb-4">
-              <img
-                src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                alt=""
-                className="w-100 "
-              />
+            <div className="character-info__bg d-flex col-12 col-md-12 col-lg-12 m-4">
+              <div className="col-6 col-md-6 col-lg-6 m-4">
+                <img
+                  src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                  alt=""
+                  className="w-100 "
+                />
+              </div>
+              <div className="col-5 col-md-5 col-lg-5 p-4">
+                <h1>{item.name}</h1>
+                <p>{item.description}</p>
+              </div>
             </div>
-            <div className="col-12 col-md-6">
-              <h1>{item.name}</h1>
-              <h4>{item.description}</h4>
-            </div>
 
-            <div className="row d-flex">
+            <div className="row d-flex m-4">
               <Comics />
             </div>
           </div>

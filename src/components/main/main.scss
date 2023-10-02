@@ -10,18 +10,32 @@
 
 .header {
   width: 100%;
-  height: 150px;
+  height: 250px;
+  position: relative;
+
+  &__logo {
+    max-width: 100px;
+    width: 100%;
+    max-height: 100px;
+    height: 100%;
+  }
 }
 
 body .main {
   width: 100%;
   min-height: 100vh;
+  background-image: url("../../assets/images/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: #8ee4af;
   color: #05386b;
   transition: all 0.4s;
 
   &.dark {
-    background-color: #05386b;
+    // background-color: #05386b;
+    background-image: url("../../assets/images/bg-night.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #edf5e1;
   }
 
@@ -47,8 +61,6 @@ body .main {
   align-items: center;
 }
 
-/* styles.css */
-
 /* Задаємо кольори для активної кнопки і крапки "Еліпсис" */
 .pagination .page-item.active .page-link {
   background-color: #379683;
@@ -67,6 +79,12 @@ body .main {
   background-color: #8ee4af;
   border-color: #379683;
   color: #343a40;
+  transition: 0.4s ease;
+
+  &:hover {
+    background-color: #379683;
+    opacity: 0.8;
+  }
 }
 
 /* Змінюємо стилі кнопок попередньої і наступної сторінки */
@@ -82,4 +100,24 @@ body .main {
   background-color: transparent;
   border-color: transparent;
   color: #343a40;
+}
+
+.change-theme {
+  position: absolute;
+  top: 47px;
+  right: 300px;
+  background-color: #379683;
+  border-color: #379683;
+  cursor: pointer;
+  transition: all 0.4s;
+
+  &:hover {
+    background-color: #8ee4af;
+    border-color: #8ee4af;
+  }
+}
+
+.character-info__bg {
+  background-color: #379683;
+  opacity: 0.8;
 }

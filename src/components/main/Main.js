@@ -5,11 +5,12 @@ import PaginationComponent from "./Pagination";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import logo from "../../assets/images/marvel-logo.png";
 
 function Main() {
   const [items, setItems] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsOnPage] = useState(50);
+  const [itemsOnPage] = useState(20);
   const offset = (currentPage - 1) * itemsOnPage;
   const limit = itemsOnPage;
   const [url, setUrl] = useState(
@@ -41,13 +42,7 @@ function Main() {
       setItems(data);
     };
 
-    const delay = 1000; // 1 секунда (1000 мілісекунд)
-    const timeoutId = setTimeout(() => {
-      fetchData();
-    }, delay);
-
     fetchData();
-    return () => clearTimeout(timeoutId);
   }, [url, offset, limit]);
 
   const currentItem = items?.data?.results;
@@ -60,6 +55,8 @@ function Main() {
       event.preventDefault();
       event.stopPropagation();
     }
+
+    console.log("test");
 
     setValidated(true);
     if (search.trim() === "") {
@@ -77,36 +74,45 @@ function Main() {
 
   return (
     <>
-      <div className="header"></div>
-
-      <div className="container mt-4">
-        <Form onSubmit={searchMarvel} noValidate validated={validated}>
-          <Form.Group className="mb-3" controlId="validationCustom01">
-            <InputGroup className="mb-3">
-              <Button
-                variant="primary"
-                id="button-addon1"
-                type="submit"
-                style={{
-                  backgroundColor: "#379683",
-                  color: "#ffffff",
-                  border: "none",
-                }}
-              >
-                Search
-              </Button>
-              <Form.Control
-                type="text"
-                placeholder="Enter hero name..."
-                required
-                onChange={(e) => setSearch(e.target.value)}
-              />
-              <Form.Control.Feedback type="invalid">
-                Please type character name.
-              </Form.Control.Feedback>
-            </InputGroup>
-          </Form.Group>
-        </Form>
+      <div className="header">
+        <div className="container">
+          <div className="row d-flex align-items-center">
+            <div className="col-9 col-md-6 col-lg-3 mb-4 mt-4 header__wrapper">
+              <div className="header__logo me-5">
+                <img src={logo} alt="logo" />
+              </div>
+            </div>
+            <div className="col-10 col-md-6 col-lg-9">
+              <Form onSubmit={searchMarvel} noValidate validated={validated}>
+                <Form.Group className="mb-3" controlId="validationCustom01">
+                  <InputGroup className="mb-3">
+                    <Button
+                      variant="primary"
+                      id="button-addon1"
+                      type="submit"
+                      style={{
+                        backgroundColor: "#379683",
+                        color: "#ffffff",
+                        border: "none",
+                      }}
+                    >
+                      Search
+                    </Button>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter character name..."
+                      required
+                      onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Please type character name.
+                    </Form.Control.Feedback>
+                  </InputGroup>
+                </Form.Group>
+              </Form>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="content container">
