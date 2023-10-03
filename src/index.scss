@@ -1,11 +1,12 @@
 :root {
-  --accent-dark: #379683;
-  --accent-light: #e9eaee;
-  --bg-dark: #060606;
-  --bg-light: coral;
+  --accent-dark: #a288e3;
+  --accent-light: #f2f5ff;
+  --bg-dark: #0f0326;
+  --bg-light: #c73e1d;
 }
 
 .layout {
+  height: 100%;
   background-color: var(--bg-light);
   color: #222;
   transition: all 0.5s;

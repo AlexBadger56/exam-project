@@ -42,8 +42,6 @@ function Main() {
       event.stopPropagation();
     }
 
-    console.log("test");
-
     setValidated(true);
     if (search.trim() === "") {
       setUrl(

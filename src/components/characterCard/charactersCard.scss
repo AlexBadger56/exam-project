@@ -4,11 +4,20 @@
   cursor: pointer;
   overflow: hidden;
 
+  &.dark {
+    background-color: var(--bg-dark);
+
+    &.change-theme {
+      color: var(--accent-dark);
+    }
+  }
+
   &__img {
     width: 100%;
     max-height: 260px;
     height: 100%;
     transition: 0.5s;
+    object-fit: cover;
 
     &:hover {
       transform: scale(1.1);

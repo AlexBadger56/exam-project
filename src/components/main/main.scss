@@ -27,21 +27,9 @@
 
 body .main {
   width: 100%;
-  min-height: 100vh;
-  background-image: url("../../assets/images/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #8ee4af;
-  color: #05386b;
+  max-height: 100vh;
+  height: 100%;
   transition: all 0.4s;
-
-  &.dark {
-    // background-color: #05386b;
-    background-image: url("../../assets/images/bg-night.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: #edf5e1;
-  }
 
   p {
     color: inherit;
@@ -109,4 +97,10 @@ body .main {
 .character-info__bg {
   background-color: #379683;
   font-size: large;
+
+  @media (max-width: 720px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
 }

@@ -28,7 +28,7 @@ const CharacterInfo = () => {
     <>
       {item ? (
         <div className="container">
-          <div className="row d-flex justify-content-between pt-5 mb-5">
+          <div className="row d-flex justify-content-between pt-5">
             <div className="col-1 col-md-1 col-lg-10 header__logo me-5">
               <img src={logo} alt="logo" />
             </div>
@@ -53,11 +53,11 @@ const CharacterInfo = () => {
             </div>
 
             <div className="character-info__bg d-flex col-12 col-md-12 col-lg-12 m-4">
-              <div className="col-6 col-md-6 col-lg-6 m-4">
+              <div className="col-6 col-sm-12 col-md-6 col-lg-6 m-4">
                 <img
                   src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                   alt=""
-                  className="w-100 "
+                  className="w100 "
                 />
               </div>
               <div className="col-5 col-md-5 col-lg-5 p-4">
@@ -66,7 +66,7 @@ const CharacterInfo = () => {
               </div>
             </div>
 
-            <div className="row d-flex m-4">
+            <div className="row d-flex m-4 ">
               <Comics />
             </div>
           </div>
