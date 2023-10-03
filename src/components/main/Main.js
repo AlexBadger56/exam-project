@@ -1,5 +1,6 @@
 import "./main.scss";
 import CharacterCard from "../characterCard/CharacterCard";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PaginationComponent from "./Pagination";
 import Button from "react-bootstrap/Button";
@@ -57,16 +58,16 @@ function Main() {
   };
 
   return (
-    <>
+    <div className="global__wrapper">
       <div className="header">
         <div className="container">
           <div className="row d-flex align-items-center justify-content-between">
-            <div className="col-2 col-md-2 col-lg-2 mb-4 mt-4 header__wrapper">
-              <div className="header__logo me-5">
+            <div className="col-xs-12 col-md-2 col-lg-2 mb-4 mt-4 header__wrapper">
+              <Link to="/" className="header__logo">
                 <img src={logo} alt="logo" />
-              </div>
+              </Link>
             </div>
-            <div className="col-4 col-md-6 col-lg-7">
+            <div className="col-xs-12 col-md-6 col-lg-7">
               <Form onSubmit={searchMarvel} noValidate validated={validated}>
                 <Form.Group className="mb-3" controlId="validationCustom01">
                   <InputGroup className="mb-3">
@@ -95,7 +96,7 @@ function Main() {
                 </Form.Group>
               </Form>
             </div>
-            <div className="col-2 col-md-2 col-lg-1 mw-50 pb-3">
+            <div className="col-xs-12 col-2 col-md-2 col-lg-1 mw-50 pb-3">
               <CustomizedSwitches />
             </div>
           </div>
@@ -116,7 +117,7 @@ function Main() {
           paginate={paginate}
         />
       </div>
-    </>
+    </div>
   );
 }
 export default Main;

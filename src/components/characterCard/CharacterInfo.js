@@ -28,13 +28,16 @@ const CharacterInfo = () => {
     <>
       {item ? (
         <div className="container">
-          <div className="row d-flex justify-content-between pt-5">
-            <div className="col-1 col-md-1 col-lg-10 header__logo me-5">
+          <div className="row d-flex justify-content-between align-items-center pt-5">
+            <Link
+              to="/"
+              className="col-xs-6 col-sm-6 col-md-6 col-lg-6 header__logo"
+            >
               <img src={logo} alt="logo" />
-            </div>
-            <div className="d-flex col-1 col-md-1 col-lg-2">
+            </Link>
+            <div className="d-flex col-xs-6 col-sm-6 col-md-6 col-lg-6 justify-content-end header__btns">
               {" "}
-              <div className="m-4 pe-3">
+              <div className="m-4">
                 <Link
                   to="/"
                   className="btn btn-primary "
@@ -47,26 +50,26 @@ const CharacterInfo = () => {
                   Back
                 </Link>
               </div>
-              <div className="mw-50 p-3">
+              <div className="mw-50 m-3">
                 <CustomizedSwitches />
               </div>
             </div>
 
-            <div className="character-info__bg d-flex col-12 col-md-12 col-lg-12 m-4">
-              <div className="col-6 col-sm-12 col-md-6 col-lg-6 m-4">
+            <div className="character-info d-flex col-12 col-md-12 col-lg-12">
+              <div className="col-sm-12 col-md-6 col-lg-6 p-4 character-info__image">
                 <img
                   src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                   alt=""
                   className="w100 "
                 />
               </div>
-              <div className="col-5 col-md-5 col-lg-5 p-4">
+              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 p-4 character-info__content">
                 <h1>{item.name}</h1>
                 <p>{item.description}</p>
               </div>
             </div>
 
-            <div className="row d-flex m-4 ">
+            <div className="row d-flex my-4 mx-auto">
               <Comics />
             </div>
           </div>

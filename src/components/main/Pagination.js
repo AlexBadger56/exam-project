@@ -10,7 +10,7 @@ const PaginationComponent = ({
   const totalPages = Math.ceil(totalItems / itemsOnPage);
 
   const pageItems = [];
-  const maxPagesToShow = 5; // Максимальна кількість кнопок для показу
+  const maxPagesToShow = 2; // Максимальна кількість кнопок для показу
 
   // Перевірка, чи загальна кількість сторінок більше 1
   if (totalPages > 1) {
@@ -28,7 +28,7 @@ const PaginationComponent = ({
       if (
         page === 1 || // Перша сторінка завжди відображається
         page === totalPages || // Остання сторінка завжди відображається
-        (page >= currentPage - 2 && page <= currentPage + 2) || // Відображати сторінки навколо поточної
+        (page >= currentPage - 1 && page <= currentPage + 1) || // Відображати сторінки навколо поточної
         page === currentPage + maxPagesToShow - 1 // Остання сторінка в максимальному діапазоні
       ) {
         pageItems.push(

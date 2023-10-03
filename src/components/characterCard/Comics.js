@@ -53,9 +53,9 @@ const Comics = () => {
               <img
                 src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                 alt="Hero Avatar"
-                className="card-img-top"
+                className="card-img-top mb-3"
               />
-              <h3 className="card-title">{comic.title}</h3>
+              <h3 className="card-title mb-3">{comic.title}</h3>
 
               <Button variant="primary" onClick={() => handleShowModal(comic)}>
                 View Details
