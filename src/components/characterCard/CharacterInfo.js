@@ -5,23 +5,23 @@ import CustomizedSwitches from "../ThemeToggle/ThemeToggle";
 import logo from "../../assets/images/marvel-logo.png";
 
 const CharacterInfo = () => {
-  const { id } = useParams();
-  const [item, setItem] = useState(null);
+  const { id } = useParams(); // Отримання параметра id з URL
+  const [item, setItem] = useState(null); // Створення стану для збереження інформації про персонажа
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
           `https://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=ba9129e72667df3ce251058a90350325&hash=40c90ea382c6aedf8e37c3cc497de90f`
-        );
+        ); // Виконання запиту до сервера Marvel для отримання інформації про персонажа
         if (!response.ok) throw new Error(`Error! Status: ${response.status}`);
         const dataJson = await response.json();
-        setItem(dataJson.data.results[0]);
+        setItem(dataJson.data.results[0]); // Збереження отриманої інформації про персонажа в стані
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-    fetchData();
+    fetchData(); // Виклик функції fetchData при завантаженні компонента та при зміні параметра id
   }, [id]);
 
   return (

@@ -8,10 +8,10 @@ const Comics = () => {
   const [item, setItem] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [selectedComic, setSelectedComic] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1); // Додали стан для сторінки
-  const [itemsOnPage] = useState(10); // Змінили кількість елементів на сторінці
+  const [currentPage, setCurrentPage] = useState(1); // Стан для сторінки
+  const [itemsOnPage] = useState(10); // Кількість елементів на сторінці
   const [offset, setOffset] = useState(0);
-  const [totalComics, setTotalComics] = useState(0); // Додайте стан для загальної кількості сторінок
+  const [totalComics, setTotalComics] = useState(0); // Стан для загальної кількості сторінок
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +23,7 @@ const Comics = () => {
         const dataJson = await response.json();
         setItem(dataJson.data.results);
 
-        // Отримайте загальну кількість коміксів та обчисліть загальну кількість сторінок
+        // Загальну кількість коміксів та обчислиння загальної кількісті сторінок
         const totalComics = dataJson.data.total;
         setTotalComics(totalComics);
       } catch (error) {
@@ -79,7 +79,7 @@ const Comics = () => {
 
       <div className="container d-flex justify-content-center">
         <PaginationComponent
-          totalItems={totalComics} // Використовуйте totalPage замість довжини масиву item
+          totalItems={totalComics}
           itemsOnPage={itemsOnPage}
           currentPage={currentPage}
           paginate={paginate}
